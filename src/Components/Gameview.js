@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
-class Title extends Component {
+class Gameview extends Component {
     render() {
         return <div>
-            <h1>REACTION! SMS Trivia</h1>
+            <p>GAME HERE!</p>
+            
         </div>
     }
 }
 
-export default Title
+export default Gameview

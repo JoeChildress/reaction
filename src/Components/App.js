@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import '../App.css';
 import Title from './Title'
+import Overview from './Overview'
+import Gameview from './Gameview'
+import EnterName from './EnterName'
+import {Route, Link} from 'react-router-dom'
 
 class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      start: 'overview'
+    }
+  }
+
   render() {
+  
     return (
       <div className="App">
       <Title></Title>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-            hi!
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Route exact path='/' render = {() => (
+        <div>
+						<div>
+              <Overview></Overview>
+						</div>
+            <div>
+            <EnterName></EnterName>
+          </div>
+        </div>
+
+				)} /> 
+        <Route exact path='/GameOn' render = {() => (
+						<div>
+              {/* <PhotoWall {...this.props} /> */}
+              <Gameview></Gameview>
+						</div>
+				)} /> 
+
       </div>
     );
   }
