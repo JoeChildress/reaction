@@ -5,37 +5,47 @@ import Overview from './Overview'
 import Gameview from './Gameview'
 import EnterName from './EnterName'
 import {Route, Link} from 'react-router-dom'
+import helpers from '../helpers'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      start: 'overview'
+      players: [],
+      count: 8,
+      start: false,
+      gameCount: 10,
+      gameMode: 'addPlayer'
     }
+    this.runEnterTimer = helpers.runEnterTimer.bind(this)
+    this.checkEnterTimer = helpers.checkEnterTimer.bind(this)
   }
 
   render() {
   
     return (
       <div className="App">
-      <Title></Title>
-      <Route exact path='/' render = {() => (
-        <div>
-						<div>
-              <Overview></Overview>
-						</div>
-            <div>
-            <EnterName></EnterName>
-          </div>
-        </div>
+      
+        <Title></Title>
 
-				)} /> 
-        <Route exact path='/GameOn' render = {() => (
-						<div>
-              {/* <PhotoWall {...this.props} /> */}
-              <Gameview></Gameview>
-						</div>
-				)} /> 
+        <Route exact path='/' render = {() => (
+          <div>
+            <Overview></Overview>
+          </div>
+        )} /> 
+
+        <Route path='/Enter' render = {() => (
+          <div>    
+            <EnterName runEnterTimer={this.runEnterTimer} checkEnterTimer={this.checkEnterTimer} count={this.state.count} players={this.state.players} start={this.state.start}>
+            </EnterName>
+          </div>
+        )} />
+
+        <Route path='/GameOn' render = {() => (
+          <div>
+            <Gameview></Gameview>
+          </div>
+        )} />
 
       </div>
     );
