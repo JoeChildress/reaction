@@ -11,9 +11,9 @@ class EnterName extends Component {
     // }
 
     render() {
- if (this.props.start === true){
-     return <Redirect to='/GameOn' />
- }
+        if (this.props.start === true){
+            return <Redirect to='/GameOn' />
+        }
 
         return <div>
             <h2>206-555-5555</h2>

@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 
 
 const helpers = {
@@ -6,6 +8,7 @@ const helpers = {
          this.setState({
              count: this.state.count - 1
          })
+         checkServer()
          }, 1000)
      },
      checkEnterTimer: function() {
@@ -16,9 +19,13 @@ const helpers = {
             })
 
        }
-     },
+     }
+}
 
-
+function checkServer() {
+    console.log('_checkServer firing');
+    axios.get('https://jsonplaceholder.typicode.com/users')
+    .then(res => {console.log(res.data)})
 
 }
 
