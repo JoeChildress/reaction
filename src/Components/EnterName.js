@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import helpers from '../helpers'
 import { Route, Redirect } from 'react-router'
 
 
@@ -30,9 +29,6 @@ class EnterName extends Component {
      componentDidUpdate() {
         this.props.checkEnterTimer()
      }
-
-
-
 }
 
 export default EnterName

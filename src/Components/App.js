@@ -15,7 +15,8 @@ class App extends Component {
       count: 8,
       start: false,
       gameCount: 10,
-      gameMode: 'addPlayer'
+      gameMode: 'addPlayer',
+      timeStamp: new Date()
     }
     this.runEnterTimer = helpers.runEnterTimer.bind(this)
     this.checkEnterTimer = helpers.checkEnterTimer.bind(this)
