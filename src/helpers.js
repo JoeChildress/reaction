@@ -1,6 +1,9 @@
 import axios from 'axios';
 import ids from './ids'
 
+const username= ids.ACCOUNT_SID;
+const password= ids.AUTH_TOKEN;
+
 const helpers = {
     runEnterTimer: function() {
         this.myInterval = setInterval(() => {
@@ -22,9 +25,6 @@ const helpers = {
 }
 
 function checkServer(state) {
-
-    const username= ids.ACCOUNT_SID;
-    const password= ids.AUTH_TOKEN;
     const getUrl = 'https://api.twilio.com/2010-04-01/Accounts/' + username + '/Messages.json?DateSent=' + getTodayUTC();
     const headers = {'Authorization': 'Basic ' + btoa(username + ':' + password)};
     const smsInbound = [];
@@ -83,12 +83,4 @@ function getTodayUTC() {
     return today;
 }
 
-
-
 export default helpers;
-
-
-/*
-{sid: "SM6c219d043e6d5081239d61e97f869ed1", date_created: "Sun, 12 May 2019 19:24:48 +0000", date_updated: "Sun, 12 May 2019 19:24:48 +0000", date_sent: "Sun, 12 May 2019 19:24:48 +0000", account_sid: "AC0b3b1065617915c63b91e44d2b8f51b4", …}
-
-*/
