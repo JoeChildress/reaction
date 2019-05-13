@@ -9,6 +9,10 @@ class Gameview extends Component {
             <QuestionBox />
         </div>
     }
+
+    componentDidMount() {
+        this.props.changeMode()
+    }
 }
 
 export default Gameview

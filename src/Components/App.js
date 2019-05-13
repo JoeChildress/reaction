@@ -20,6 +20,7 @@ class App extends Component {
     }
     this.runEnterTimer = helpers.runEnterTimer.bind(this)
     this.checkEnterTimer = helpers.checkEnterTimer.bind(this)
+    this.changeMode = helpers.changeMode.bind(this)
   }
 
   render() {
@@ -44,7 +45,7 @@ class App extends Component {
 
         <Route path='/GameOn' render = {() => (
           <div>
-            <Gameview></Gameview>
+            <Gameview changeMode={this.changeMode}></Gameview>
           </div>
         )} />
 

@@ -3,6 +3,7 @@ import ids from './ids'
 
 const username= ids.ACCOUNT_SID;
 const password= ids.AUTH_TOKEN;
+const headers = {'Authorization': 'Basic ' + btoa(username + ':' + password)};
 
 const helpers = {
     runEnterTimer: function() {
@@ -21,12 +22,17 @@ const helpers = {
             })
 
        }
+     },
+     changeMode: function(){
+         this.setState({
+            gameMode: 'addAnswers'
+         })
      }
 }
 
 function checkServer(state) {
     const getUrl = 'https://api.twilio.com/2010-04-01/Accounts/' + username + '/Messages.json?DateSent=' + getTodayUTC();
-    const headers = {'Authorization': 'Basic ' + btoa(username + ':' + password)};
+    // const headers = {'Authorization': 'Basic ' + btoa(username + ':' + password)};
     const smsInbound = [];
 
     axios.get(getUrl, {headers: headers})
@@ -56,6 +62,7 @@ function checkServer(state) {
                 smsInbound[message.sid] = false;
                 //getMessage(message.sid);
                 console.log(smsInbound)
+                getMessage(message.sid,state);
             } else {
                 console.log('no messages within time limit');
             }
@@ -64,6 +71,25 @@ function checkServer(state) {
 
         }
     })//END THEN
+}
+
+function getMessage(sid,state) {
+    console.log('getMessage fired: ', sid);
+
+    let getUrl = "https://api.twilio.com/2010-04-01/Accounts/" + username + "/Messages/" + sid + ".json";
+
+    axios.get(getUrl, {headers: headers})
+    .then(res => {
+        
+        console.log('MESSAGE RESPONSE: ',res.data.body)
+
+        //IF ADDPLAYER MODE THEN ADD NEW PLAYERS
+        if (state.gameMode === "addPlayer") {
+            console.log("data is being sorted for new players");
+            //Player.add(data);
+        }
+    });
+
 }
 
 //get UTC Time
