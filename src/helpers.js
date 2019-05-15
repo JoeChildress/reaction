@@ -81,7 +81,9 @@ function getMessage(sid,state) {
     axios.get(getUrl, {headers: headers})
     .then(res => {
         
-        console.log('MESSAGE RESPONSE: ',res.data.body)
+        console.log('MESSAGE RESPONSE: ',res.data.body) //TEXT MESSAGE
+        console.log('MESSAGE RESPONSE NUMBER: ',res.data.from) //PHONE NUMBER
+        console.log('MESSAGE RESPONSE RES: ',res) //ALL MESSAGE DATA
 
         //IF ADDPLAYER MODE THEN ADD NEW PLAYERS
         if (state.gameMode === "addPlayer") {
