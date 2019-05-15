@@ -111,4 +111,14 @@ function getTodayUTC() {
     return today;
 }
 
+function MakePlayer(id, nm) {
+    this.id = id;
+    this.name = nm;
+    this.answer = '';
+    this.score = 0;
+    this.correct = false;
+    this.champ = false
+}
+
+
 export default helpers;

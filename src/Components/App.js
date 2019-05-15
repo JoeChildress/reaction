@@ -37,8 +37,9 @@ class App extends Component {
         )} /> 
 
         <Route path='/Enter' render = {() => (
-          <div>    
-            <EnterName runEnterTimer={this.runEnterTimer} checkEnterTimer={this.checkEnterTimer} {...this.state}>
+          <div> 
+            <EnterName runEnterTimer={this.runEnterTimer} checkEnterTimer={this.checkEnterTimer} count={this.state.count} start={this.state.start}>
+            {/* <EnterName runEnterTimer={this.runEnterTimer} checkEnterTimer={this.checkEnterTimer} {...this.state}> */}
             </EnterName>
           </div>
         )} />
